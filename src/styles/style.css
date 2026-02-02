@@ -13,6 +13,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+}
+
+.post-container {
+  flex-grow: 1;
+  max-width: 900px;
+  border: 2px solid blue;
+  margin: 20px;
+  padding: 10px;
+}
+
+.post-image {
+  width: 200px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,7 +48,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -35,7 +58,7 @@ h1 {
   line-height: 1.1;
 }
 
-#app {
+#app-container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;

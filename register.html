@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="./public/vite.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS2</title>
+  <link rel="stylesheet" href="./src/styles/style.css">
+  <script type="module" src="./src/main.ts"></script>
+  <script type="module" src="app.js"></script>
+  <script type="module" src="./src/pages/index.js"></script>
+  <script type="module" src="script.js"></script>
+</head>
+
+<body>
+  <nav>
+    <a href="/login.html">Login</a>
+    <a href="/">Home</a>
+    <a href="/products">Products</a>
+    <a href="/non-existent-page">Broken Link</a>
+  </nav>
+  <main id="app-content"></main>
+
+  <form id="register-form">
+    <label for="name">Name*</label>
+    <input id="name" type="name" name="name" required value="aneufnubnase">
+    <label for="email">Email*</label>
+    <input id="email" type="email" name="email" required value="aneufnubnase@stud.noroff.no">
+    <label for="password">Password*</label>
+    <input id="password" type="password" name="password" required value="hhdaeyhfr">
+    <label for="bio">Bio</label>
+    <input id="bio" type="bio" name="bio">
+    <label for="avatar-url">Avatar URL</label>
+    <input id="avatar-url" type="avatar-url" name="avatar-url">
+    <label for="avatar-alt">Avatar ALT</label>
+    <input id="avatar-alt" type="avatar-alt" name="avatar-alt">
+    <label for="banner-url">Banner URL</label>
+    <input id="banner-url" type="banner-url" name="banner-url">
+    <label for="banner-alt">Banner ALT</label>
+    <input id="banner-alt" type="banner-alt" name="banner-alt">
+    <label for="venue-manager">Venue Manager</label>
+    <input id="venue-manager" type="venue-manager" name="venue-manager">
+    <button>Submit</button>
+  </form>
+  <div id="container"></div>
+
+
+</body>
+
+</html>

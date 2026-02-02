@@ -1,0 +1,15 @@
+{
+  "name": "This Awesome App Of Mine",
+  "short_name": "AwesomeApp",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#3367D6",
+  "icons": [
+    {
+      "src": "./img/b395f53d-ea4d-47da-b477-86768dc1347e.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ]
+}
