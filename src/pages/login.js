@@ -1,4 +1,4 @@
-import { addToLocalStorage } from "../../utils";
+import { addToLocalStorage } from "../utils/utils.js";
 
 console.log("login.js is loaded");
 const loginForm = document.querySelector("#login-form");
