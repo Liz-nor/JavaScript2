@@ -1,69 +1,78 @@
-import { getFromLocateStorage } from "../utils/utils.js";
-
+import { getFromLocalStorage } from "../utils/utils.js";
+import {
+  currentPage,
+  postsPerPage,
+  displayPage,
+  setAllPosts,
+} from "../components/pagination.js";
+import { getNavbarHTML } from "../components/navbar.js";
+import { API_URL, NOROFF_API_KEY } from "../utils/constants.js";
 const postContainer = document.getElementById("container");
 
-const API_URL = "https://v2.api.noroff.dev";
 const POSTS_URL = `${API_URL}/social/posts`;
 
-const NOROFF_API_KEY = `d9384ada-1b61-4c9a-9eea-d4410a3e835f`;
 /**
  * @param {string} fetchPosts - Fetching all the posts made in the API
  * @returns {data} Parsed Json response
  * @throws {Error} If the response does not go through
  */
-async function fetchPosts() {
+export async function fetchPosts() {
   try {
-    const accessToken = getFromLocateStorage("accessToken");
-    const fetchOptions = {
+    const accessToken = getFromLocalStorage("accessToken");
+    console.log("accessToken", accessToken);
+
+    const response = await fetch(POSTS_URL, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "X-Noroff-API-Key": NOROFF_API_KEY,
+        "Content-Type": "application/json",
       },
-    };
+    });
 
-    const response = await fetch(POSTS_URL, fetchOptions);
     const json = await response.json();
+
     return json.data;
-  } catch (error) {}
+  } catch (error) {
+    console.error("fetchPosts error:", error);
+    return [];
+  }
 }
-/**
- *
- * @param {*} posts
- */
-function generatePosts(posts) {
+
+export function generatePosts(posts) {
+  postContainer.innerHTML = "";
   console.log(posts);
   for (let i = 0; i < posts.length; i++) {
-    const postContainer = document.createElement("div");
-    postContainer.className = "post-container";
+    const post = posts[i];
+
+    const postElement = document.createElement("div");
+    postElement.className = "post-container";
 
     const title = document.createElement("h2");
-    title.textContent = posts[i].title;
+    title.textContent = post.title;
 
     const body = document.createElement("p");
-    body.textContent = posts[i].body;
+    body.textContent = post.body;
 
-    const image = document.createElement("img");
-    image.className = "post-image";
-    const mediaUrl = posts[i].media?.url || posts[i].image?.url;
+    postElement.append(title, body);
+
+    const mediaUrl = post.media?.url;
+
     if (mediaUrl) {
+      const image = document.createElement("img");
+      image.className = "post-image";
       image.src = mediaUrl;
-    } else {
-      image.style.display = "none";
-    }
-    image.onerror = () => {
-      //If no image, dont show broken image icon
-      image.style.display = "none";
-    };
-    console.log(posts[i]);
-    postContainer.append(title, body, image);
+      image.alt = post.media?.alt || post.title || "Post-image";
+      image.onerror = () => image.remove();
 
-    container.append(postContainer);
+      postElement.append(image);
+    }
+    postContainer.appendChild(postElement);
   }
 }
 
 async function main() {
   const posts = await fetchPosts();
-  generatePosts(posts);
+  setAllPosts(posts);
 }
 
 main();

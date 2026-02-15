@@ -1,1 +1,1 @@
-const SINGLEPOST_URL = `${API_URL}/social/posts/<id>`;
+// const SINGLEPOST_URL = `${API_URL}/social/posts/<id>`;

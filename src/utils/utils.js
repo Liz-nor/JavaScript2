@@ -2,6 +2,10 @@ export function addToLocalStorage(key, value) {
   localStorage.setItem(key, value);
 }
 
-export function getFromLocateStorage(key) {
+export function getFromLocalStorage(key) {
   return localStorage.getItem(key);
+}
+
+export function removeFromLocalStorage() {
+  return localStorage.removeItem(key);
 }

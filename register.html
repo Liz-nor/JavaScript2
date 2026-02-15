@@ -8,10 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS2</title>
   <link rel="stylesheet" href="./src/styles/style.css">
-  <script type="module" src="./src/main.ts"></script>
   <script type="module" src="app.js"></script>
   <script type="module" src="./src/pages/index.js"></script>
-  <script type="module" src="script.js"></script>
+  <script type="module" src="./src/utils/script.js"></script>
 </head>
 
 <body>
@@ -19,7 +18,7 @@
     <a href="/login.html">Login</a>
     <a href="/">Home</a>
     <a href="/products">Products</a>
-    <a href="/non-existent-page">Broken Link</a>
+    <a class="broken-link" href="/non-existent-page">Broken Link</a>
   </nav>
   <main id="app-content"></main>
 
@@ -44,7 +43,6 @@
     <input id="venue-manager" type="venue-manager" name="venue-manager">
     <button>Submit</button>
   </form>
-  <div id="container"></div>
 
 
 </body>
