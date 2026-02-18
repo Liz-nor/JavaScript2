@@ -9,52 +9,31 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="shortcut icon" href="public/img/LE-favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script type="module" src="./src/pages/index.js"></script>
     <script type="module" src="./public/sw.js"></script>
     <script type="module" src="./src/components/pagination.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary nav">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.html">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled broken-link" aria-disabled="true">Broken Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="createPost.html">Create Post</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <a href="/">Home</a>
-    <a href="/register.html">Register</a>
-    <a href="/login.html">Login</a>
+    <header id="navbar">
+        <!-- <main id="app"></main> -->
+        <ul>
+            <a href="/">Home</a>
+            <a href="/register.html" class="isLoggedOut">Register</a>
+            <a href="/login.html" class="isLoggedOut">Login</a>
+            <a href="/createPost.html" class="isLoggedIn">Create Post</a>
+            <button id="logout-btn" class="isLoggedIn">Log Out</button>
+        </ul>
+    </header>
     <h1>Social Posts</h1>
-    <div id="container"></div>
+    <div id="container" class="isLoggedIn"></div>
     <div id="pagination-controls">
         <button id="prevBtn">Previous</button>
         <span id="page-number"></span>
         <button id="nextBtn">Next</button>
     </div>
-
 </body>
 
 </html>

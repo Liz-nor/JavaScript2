@@ -1,5 +1,18 @@
 import { Router } from "./Router.js";
-import { routes } from "./routes.js";
+import { startRouter } from "./router.js";
+
+renderNavbar();
+startRouter();
+
+window.addEventListener("route:loaded", (e) => {
+  const path = e.detail.path;
+
+  if (path === "/create") initCreatePost();
+  if (path === "/profile") initProfilePage();
+  if (path === "/login") initLoginPage();
+  if (path === "/register") initRegisterPage();
+  if (path === "/post") initSinglePostPage();
+});
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {

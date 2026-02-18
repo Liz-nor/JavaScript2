@@ -3,11 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="./public/vite.svg">
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS2</title>
   <link rel="stylesheet" href="./src/styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="shortcut icon" href="public/img/LE-favicon.png" type="image/x-icon">
   <script type="module" src="app.js"></script>
   <script type="module" src="./src/pages/index.js"></script>
   <script type="module" src="./src/utils/script.js"></script>
@@ -21,29 +22,52 @@
     <a class="broken-link" href="/non-existent-page">Broken Link</a>
   </nav>
   <main id="app-content"></main>
+  <div class="register">
+    <h2>Please make an account</h2>
+    <form id="register-form">
+      <div>
+        <label for="name">Name*</label>
+        <input id="name" type="name" name="name" required value="aneufnubnase">
 
-  <form id="register-form">
-    <label for="name">Name*</label>
-    <input id="name" type="name" name="name" required value="aneufnubnase">
-    <label for="email">Email*</label>
-    <input id="email" type="email" name="email" required value="aneufnubnase@stud.noroff.no">
-    <label for="password">Password*</label>
-    <input id="password" type="password" name="password" required value="hhdaeyhfr">
-    <label for="bio">Bio</label>
-    <input id="bio" type="bio" name="bio">
-    <label for="avatar-url">Avatar URL</label>
-    <input id="avatar-url" type="avatar-url" name="avatar-url">
-    <label for="avatar-alt">Avatar ALT</label>
-    <input id="avatar-alt" type="avatar-alt" name="avatar-alt">
-    <label for="banner-url">Banner URL</label>
-    <input id="banner-url" type="banner-url" name="banner-url">
-    <label for="banner-alt">Banner ALT</label>
-    <input id="banner-alt" type="banner-alt" name="banner-alt">
-    <label for="venue-manager">Venue Manager</label>
-    <input id="venue-manager" type="venue-manager" name="venue-manager">
-    <button>Submit</button>
-  </form>
-
+        <i class="fa-regular fa-circle-user"></i>
+      </div>
+      <div>
+        <label for="email">Email*</label>
+        <input id="email" type="email" name="email" required value="aneufnubnase@stud.noroff.no">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div>
+        <label for="password">Password*</label>
+        <input id="password" type="password" name="password" required value="hhdaeyhfr">
+        <i class="fa-solid fa-key"></i>
+      </div>
+      <div>
+        <label for="bio">Bio</label>
+        <input id="bio" type="bio" name="bio">
+      </div>
+      <div>
+        <label for="avatar-url">Avatar URL</label>
+        <input id="avatar-url" type="avatar-url" name="avatar-url">
+      </div>
+      <div>
+        <label for="avatar-alt">Avatar ALT</label>
+        <input id="avatar-alt" type="avatar-alt" name="avatar-alt">
+      </div>
+      <div>
+        <label for="banner-url">Banner URL</label>
+        <input id="banner-url" type="banner-url" name="banner-url">
+      </div>
+      <div>
+        <label for="banner-alt">Banner ALT</label>
+        <input id="banner-alt" type="banner-alt" name="banner-alt">
+      </div>
+      <div>
+        <label for="venue-manager">Venue Manager</label>
+        <input id="venue-manager" type="venue-manager" name="venue-manager">
+      </div>
+      <button>Submit</button>
+    </form>
+  </div>
 
 </body>
 

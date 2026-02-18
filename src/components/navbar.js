@@ -22,6 +22,9 @@ export function getNavbarHTML() {
           <a class="nav-link" href="./register.html">Register</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="./createPost.html">Create post</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link disabled broken-link" aria-disabled="true">Disabled</a>
         </li>
       </ul>

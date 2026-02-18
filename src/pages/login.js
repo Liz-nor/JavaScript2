@@ -20,37 +20,50 @@ loginForm.addEventListener("submit", async (event) => {
     alert(`Login failed: ${error.message}`);
   }
 });
+
 /**
  *Log in user
  * @param {object} userDetails - Details of the user logging in
  */
-// export async function loginUser(userDetails) {
-//   try {
-//     const response = await post("/auth/login", userDetails);
-//     const { accessToken, ...profile } = response.data;
+const ALLOWED_DOMAIN = "@stud.noroff.no";
 
-//     if (accessToken) {
-//       localStorage.setItem("accessToken", accessToken);
-//       localStorage.setItem("profile", JSON.stringify(profile));
-//       return profile;
-//     } else {
-//       throw new Error("Login successful, but no access token recieved");
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     throw error;
-//   }
-// }
-// /**
-//  *
-//  * @param {string} event - The event of logging in to a profile
-//  */
-// function onLoginFormSubmit(event) {
-//   event.preventDefault();
-//   const formData = new FormData(event.target);
-//   const formFields = Object.fromEntries(formData);
-//   console.log(formFields);
-//   loginUser(formFields);
-//   console.log("loginForm", loginForm);
-// }
-// loginForm.addEventListener("submit", onLoginFormSubmit);
+function updateNavAuthState() {
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const userEmail = localStorage.getItem("userEmail");
+  // --- Check if user is logged in with a valid domain
+  const isValidUser =
+    isLoggedIn &&
+    userEmail &&
+    userEmail.toLowerCase().endsWith(ALLOWED_DOMAIN.toLowerCase());
+
+  const loggedOutEls = document.querySelectorAll(".auth-logged-out");
+  const loggedInEls = document.querySelectorAll(".auth-logged-in");
+
+  if (isValidUser) {
+    loggedOutEls.forEach((el) => (el.style.display = "none"));
+    loggedInEls.forEach((el) => (el.style.display = ""));
+  } else {
+    loggedOutEls.forEach((el) => (el.style.display = ""));
+    loggedInEls.forEach((el) => (el.style.display = "none"));
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateNavAuthState();
+
+  const logoutBtn = document.getElementById("logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("userEmail");
+      updateNavAuthState();
+      // Check if we're already on index.html in root, otherwise go to ../index.html
+      const currentPath = window.location.pathname;
+      if (currentPath.endsWith("/index.html") || currentPath.endsWith("/")) {
+        window.location.reload();
+      } else {
+        window.location.href = "../index.html";
+      }
+    });
+  }
+});

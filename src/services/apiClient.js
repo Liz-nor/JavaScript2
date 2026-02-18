@@ -6,18 +6,12 @@ const BASE_URL = "https://v2.api.noroff.dev";
 async function apiClient(endpoint, options = {}) {
   const { body, ...customOptions } = options;
 
-  const apiKey = localStorage.getItem("apiKey");
-  console.log(typeof NOROFF_API_KEY);
-  console.log(NOROFF_API_KEY);
   const accessToken = localStorage.getItem("accessToken");
 
   const headers = {
     "Content-Type": "application/json",
+    "X-Noroff-API-Key": NOROFF_API_KEY,
   };
-
-  if (apiKey) {
-    headers["X-Noroff-API-Key"] = apiKey;
-  }
 
   if (accessToken) {
     headers["Authorization"] = `Bearer ${accessToken}`;
@@ -41,14 +35,6 @@ async function apiClient(endpoint, options = {}) {
     }
   }
 
-  const apiKey = localStorage.getItem("apiKey");
-  const accessToken = localStorage.getItem("accessToken");
-  if (apiKey) config.headers["X-Noroff-API-Key"] = apiKey;
-  if (accessToken) config.headers["Authorization"] = `Bearer ${accessToken}`;
-
-  if (body) {
-    config.body = JSON.stringify(body);
-  }
   try {
     const response = await fetch(BASE_URL + endpoint, config);
     const responseData = await response.json();

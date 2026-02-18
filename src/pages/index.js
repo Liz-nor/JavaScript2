@@ -1,4 +1,3 @@
-import { getFromLocalStorage } from "../utils/utils.js";
 import {
   currentPage,
   postsPerPage,
@@ -6,10 +5,10 @@ import {
   setAllPosts,
 } from "../components/pagination.js";
 import { getNavbarHTML } from "../components/navbar.js";
-import { API_URL, NOROFF_API_KEY } from "../utils/constants.js";
-const postContainer = document.getElementById("container");
+import { get } from "../services/apiClient.js";
+import { loginUser } from "../services/auth.js";
 
-const POSTS_URL = `${API_URL}/social/posts`;
+const postContainer = document.getElementById("container");
 
 /**
  * @param {string} fetchPosts - Fetching all the posts made in the API
@@ -18,20 +17,9 @@ const POSTS_URL = `${API_URL}/social/posts`;
  */
 export async function fetchPosts() {
   try {
-    const accessToken = getFromLocalStorage("accessToken");
-    console.log("accessToken", accessToken);
+    const response = await get("/social/posts");
 
-    const response = await fetch(POSTS_URL, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "X-Noroff-API-Key": NOROFF_API_KEY,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const json = await response.json();
-
-    return json.data;
+    return response.data;
   } catch (error) {
     console.error("fetchPosts error:", error);
     return [];
@@ -53,7 +41,14 @@ export function generatePosts(posts) {
     const body = document.createElement("p");
     body.textContent = post.body;
 
-    postElement.append(title, body);
+    const comments = document.createElement("p");
+    comments.textContent = post.comments;
+
+    const anchor = document.createElement("a");
+    anchor.href = `./singlePost.html?id=${post.id}`;
+    anchor.textContent = "View Post";
+
+    postElement.append(title, body, anchor);
 
     const mediaUrl = post.media?.url;
 

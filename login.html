@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS2</title>
     <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" href="public/img/LE-favicon.png" type="image/x-icon">
     <script type=module src="./src/pages/login.js"></script>
 </head>
 
@@ -15,15 +17,40 @@
         <a href="/">Home</a>
         <a href="/products">Products</a>
         <a class="broken-link" href="/non-existent-page">Broken Link</a>
+        <a href="/register.html">Register</a>
     </nav>
-    <a href="/register.html">Register</a>
-    <form id="login-form">
-        <label for="email">Email*</label>
-        <input id="email" type="email" name="email" required value="aneufnubnase@stud.noroff.no">
-        <label for="password">Password*</label>
-        <input id="password" type="password" name="password" required value="hhdaeyhfr">
-        <button>Submit</button>
-    </form>
+
+    <div class="login">
+        <div class="login-wrapper active">
+            <h1>Welcome back</h1>
+            <form id="login-form" class="login-form active">
+                <div class="login-details">
+                    <label for="email">Email*<i class="fas fa-envelope"></i></label>
+                    <input id="email" type="email" name="email" required value="aneufnubnase@stud.noroff.no">
+                    <label for="password">Password*<i class="fa-solid fa-key"></i></label>
+                    <input id="password" type="password" name="password" required value="hhdaeyhfr">
+
+                </div>
+                <button>Submit</button>
+                <div class="social-title">Or continue with</div>
+                <div class="social-login">
+
+                    <div class="social-buttons">
+                        <div class="social-btn google">Google</div>
+                        <i class="fa-brands fa-google"></i>
+                    </div>
+                    <div class="social-buttons">
+                        <div class="social-btn facebook">Facebook</div>
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </div>
+                    <div class="social-buttons">
+                        <div class="social-btn twitter">Twitter</div>
+                        <i class="fa-brands fa-twitter"></i>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

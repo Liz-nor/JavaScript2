@@ -1,12 +1,15 @@
-import { homeView } from "../pages/homeView.js";
-import { productsPage } from "../pages/products.js";
-import { loginPage } from "../pages/login.js";
-import { profilePage } from "../pages/profile.js";
-import { registerPage } from "../pages/register.js";
+import { HomePage } from "../pages/index.js";
+import { ProfilePage } from "../pages/profile.js";
+import { LoginPage } from "../pages/login.js";
+import { RegisterPage } from "../pages/register.js";
+import { CreatePostPage } from "../pages/createPost.js";
+import { SinglePostPage } from "../pages/singePost.js";
 
 export const routes = {
-  "/": homeView,
-  "/products": productsPage,
-  "/login": loginPage,
-  "/profile": profilePage,
+  "/": HomePage,
+  "/profile": ProfilePage,
+  "/login": LoginPage,
+  "/register": RegisterPage,
+  "/create": CreatePostPage,
+  "/post": SinglePostPage,
 };

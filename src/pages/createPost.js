@@ -1,75 +1,13 @@
-// import { API_URL, NOROFF_API_KEY } from "../utils/constants.js";
-// import { getFromLocalStorage } from "../utils/utils.js";
-
-// const POSTS_URL = `${API_URL}/social/posts`;
-
-// const addPostForm = document.querySelector("#add-post-form");
-// const titleValue = document.getElementById("form-title");
-// const bodyValue = document.getElementById("form-body");
-
-// export async function createPost(title, body, tags = [], media = null) {
-//   const accessToken = getFromLocalStorage("accessToken");
-
-//   const response = await fetch(POSTS_URL, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${accessToken}`,
-//       "X-Noroff-API-Key": NOROFF_API_KEY,
-//     },
-//     body: JSON.stringify({
-//       title: titleValue.value,
-//       body: bodyValue.value,
-//       tags,
-//       media,
-//     }),
-//   });
-//   if (!response.ok) {
-//     let errorMessage = "Failed to create post";
-//     try {
-//       const error = await response.json();
-//       errorMessage =
-//         error?.errors?.[0]?.message || error?.message || errorMessage;
-//     } catch (_) {}
-//     throw new Error(errorMessage);
-//   }
-
-//   const data = await response.json();
-//   console.log("Created post:", data.data);
-//   return data.data;
-// }
-// import { post } from "../../api/apiClient.js";
-// async function createPost(postData) {
-//   try {
-//     const newPost = await post('/social/posts', postData);
-// }
-// if (addPostForm) {
-//   addPostForm.addEventListener("submit", async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const newPost = await createPost(
-//         titleValue.value.trim(),
-//         bodyValue.value.trim(),
-//         [],
-//         null,
-//       );
-//       addPostForm.reset();
-//       console.log("Post created", newPost);
-//       if (addPostForm) {
-//   addPostForm.addEventListener("submit", async (e) => {
-//     e.preventDefault();
-//     } catch (error) {
-//       console.error("Create post error:", error.message);
-//     }
-//   });
-// }
-// }
 import { post } from "../services/apiClient.js";
+import { del } from "../services/apiClient.js";
 
 const addPostForm = document.querySelector("#add-post-form");
 const titleValue = document.getElementById("form-title");
 const bodyValue = document.getElementById("form-body");
+
+const tagsValue = document.getElementById("form-tags");
+const imageUrlValue = document.getElementById("form-image-url");
+const imageAltUrlValue = document.getElementById("form-image-alt");
 
 const submitBtn = document.getElementById("postSubmit");
 const modal = document.getElementById("postModal");
@@ -81,9 +19,16 @@ async function createPost(postData) {
     console.log("Created post:", newPost);
     return newPost;
   } catch (error) {
-    console.error("Create post error:", error.message);
+    console.log("Create post error:", error.message);
     throw error;
   }
+}
+if (!createPost) {
+  alert("something went wrong");
+}
+
+function looksLikeImageUrl(url) {
+  return /\.(png|jpeg|jpg|webp|gif|svg)$/i.test(url);
 }
 
 if (addPostForm) {
@@ -94,14 +39,50 @@ if (addPostForm) {
     const originalText = submitBtn.textContent;
     submitBtn.innerHTML = `<span class="button-spinner"></span> Processing...`;
 
+    const tags = (tagsValue?.value || "")
+      .split(",") // split into an array using commas
+      .map((t) => t.trim()) //removes whitespace at beginning og end of strings
+      .filter(Boolean); //remove all false values
+
+    const imageUrl = imageUrlValue.value.trim();
+    const imageAlt = imageAltUrlValue.value.trim();
+
+    if (imageUrl && !imageUrl.startsWith("http")) {
+      alert("Please enter a valid image URL starting with http:// or https://");
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      return;
+    }
+    if (imageUrl && !looksLikeImageUrl(imageUrl)) {
+      alert(
+        "Please paste a direct image URL (ending in .jpeg/ .png/ .webp, etc.)",
+      );
+      return;
+    }
+
+    const payload = {
+      title: titleValue.value.trim(),
+      body: bodyValue.value.trim(),
+      ...(tags.length ? { tags } : {}), // Using spread operator
+      ...(imageUrl ? { media: { url: imageUrl, alt: imageAlt } } : {}),
+    };
+
     try {
-      const newPost = await createPost({
-        title: titleValue.value.trim(),
-        body: bodyValue.value.trim(),
-      });
+      const res = await createPost(payload);
+
+      const created = res.data;
+
       addPostForm.reset();
-      console.log("Post created", newPost);
-      moodal.classList.remove("hidden");
+      console.log("Post created", created);
+      modal.classList.remove("hidden");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+      }, 5000);
+
+      modal.querySelector("h2").textContent = "Post Created!";
+      modal.querySelector("p").textContent =
+        `"${created.title}" was successfully posted`;
     } catch (error) {
       console.error("Create post error:", error.message);
     } finally {

@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite nodemon express.js",
+    "dev": "vite",
+    "server": "nodemon express.js",
     "start": "node express.js",
     "build": "vite build",
     "preview": "vite preview",

@@ -1,27 +1,33 @@
 import { notFoundView } from "../../views.js";
+import { routes } from "./routes.js";
 
-export class Router {
-  constructor(routes, contentElement) {
-    this.routes = routes;
-    this.contentElement = contentElement;
+export function navigate(path) {
+  window.history.pushState({}, "", path);
+  renderRoute();
+}
 
-    // Listen for back/forward navigation
-    window.addEventListener("popstate", () => this.resolveRoute());
-  }
+export function renderRoute() {
+  const app = document.getElementById("app");
+  const path = window.location.pathname;
 
-  // Called when a user clicks a link
-  navigate(path) {
-    history.pushState({}, "", path);
-    this.resolveRoute();
-  }
+  const page = routes[path] || routes["/"];
+  app.innerHTML = page();
 
-  // Find the correct view and render it
-  resolveRoute() {
-    const path = window.location.pathname;
-    // Find the view function for the current path, or use the 404 view
-    const view = this.routes[path] || notFoundView;
+  window.dispatchEvent(new CustomEvent("route:loaded", { detail: { path } }));
+}
 
-    // Render the view's content into our target element
-    this.contentElement.innerHTML = view();
-  }
+export function startRouter() {
+  window.addEventListener("popstate", renderRoute);
+
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+
+    const href = a.getAttribute("href");
+    if (!href || !href.startWith("/")) return;
+
+    e.preventDefault();
+    navigate(href);
+  });
+  renderRoute();
 }

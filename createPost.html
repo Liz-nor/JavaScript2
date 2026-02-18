@@ -8,6 +8,9 @@
     <title>Create Post</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./src/styles/styles.css">
+    <link rel="stylesheet" href="./src/styles/createPost.css">
+    <link rel="shortcut icon" href="public/img/LE-favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -21,29 +24,19 @@
                 <label for="text" class="form-body">Enter your post*</label>
                 <input type="text" class="form-control" id="form-body">
             </div>
-            <label for="avatar">Choose an image to go with your post:</label>
-            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+            <label for="form-image-url">Image URL (paste a link to an image):</label>
+            <input id="form-image-url" type="text" placeholder="https://example.com/image.jpg">
+            <input id="form-image-alt" type="text" placeholder="Image alt text (optional)">
+            <input type="text" id="form-tags" placeholder="tags (comma separated)">
             <br>
             <button id="postSubmit" type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <div class="post-list row">
-        <div class="card mt-10 col-md6 bg-ligt border-info">
-            <h5 class="card-title">Post title</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">Post text</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s
-                content.</p>
-            <a href="#" class="card-link">Edit</a>
-            <a href="#" class="card-link">Remove</a>
-        </div>
-    </div>
-    <div id="postModal" class="modal hidden">
+    <div id="postModal" class="modal hidden" role="dialog" aria-modal="true">
         <div class="modal-content">
-            <h2>Posted!</h2>
-            <p>
-                The post has been successfully posted✅
-            </p>
-            <button id="closeModal">Close</button>
+            <h2></h2>
+            <p></p>
+            <button id="closeModal" type="button">Close</button>
         </div>
     </div>
 </body>

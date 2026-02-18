@@ -22,51 +22,81 @@
   box-sizing: border-box;
 }
 
-.nav {
-  background-color: darkslategrey;
+body {
+  margin: 0;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
+
 #container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  border: 2px solid blueviolet;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-.post-container {
+.post-container,
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 1200px;
+  height: 550px;
   margin: 20px;
-  padding: 10px;
-
   border-radius: 16px;
   padding: 1rem;
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.377);
   gap: 0.75rem;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 .post-container:hover {
-  transform: transform(-6px);
+  transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
-.post-image {
-  width: 200px;
+.post-container img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  order: 2;
+}
+.post {
+  display: flex;
+  flex-direction: column;
+
+  border: 2px solid red;
+}
+.post-single-image {
+  width: 400px;
+  object-fit: contain;
+}
+.post h2,
+.post p {
+  padding: 10px 0 10px 0;
 }
 
+.tags {
+  text-decoration: underline;
+  padding: 5px;
+}
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  border: 1px rgba(255, 255, 255, 0.377) solid;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
 }
 a:hover {
   color: #535bf2;
 }
-
-body {
-  margin: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.post-container a {
+  margin-top: auto;
+  order: 3;
+  text-decoration: underline;
 }
 
 h1 {
@@ -75,31 +105,66 @@ h1 {
 }
 
 #app-container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
 }
 
 .card {
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.login {
+  display: flex;
+}
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  color: #fff;
+  padding: 2em;
+}
+.login-details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.login-details label {
+  font-size: large;
+}
+.login-details input {
+  height: 30px;
+  padding: 5px;
+  font-size: medium;
+}
+.social-title {
+  padding: 10px;
+  margin: 5px;
+}
+.social-login {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5px;
+}
+.social-buttons {
+  border: 2px solid black;
+  padding: 10px;
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.social-btn {
+  padding: 5px;
+}
+
+.fa-brands {
+  padding: 7px;
+}
+.signup-wrapper {
+  background-color: blue;
+  padding: 2em;
 }
 #register-form {
   display: flex;
@@ -159,6 +224,7 @@ button:focus-visible {
   }
 }
 
+/* Modal styling */
 .modal {
   position: fixed;
   top: 0;
@@ -171,22 +237,28 @@ button:focus-visible {
   justify-content: center;
   z-index: 999;
 }
+.modal h2 {
+  padding: 10px;
+}
+.modal.hidden {
+  display: none;
+}
 
 .modal-content {
-  background: #fff;
+  background: black;
   padding: 2rem;
   border-radius: 10px;
   max-width: 400px;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border: 6px solid green;
+  border: 6px solid rgb(40, 40, 255);
 }
 
 #closeModal {
   width: 100px;
-  height: 30px;
+  height: 50px;
   margin: auto;
-  background-color: green;
+  background-color: rgb(40, 40, 255);
   color: #fff;
   border: none;
 }
