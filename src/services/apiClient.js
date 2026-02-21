@@ -18,7 +18,7 @@ async function apiClient(endpoint, options = {}) {
   }
 
   const config = {
-    method: body ? "POST" : "GET",
+    method: body ? "POST" : "GET", // Default to POST if body is provided, otherwise GET
     ...customOptions,
     headers: {
       ...headers,
@@ -28,6 +28,7 @@ async function apiClient(endpoint, options = {}) {
 
   if (body) {
     if (body instanceof FormData) {
+      // If body is FormData, let fetch set the Content-Type header with the correct boundary
       config.body = body;
     } else {
       config.body = JSON.stringify(body);

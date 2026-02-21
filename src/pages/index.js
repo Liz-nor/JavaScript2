@@ -67,7 +67,7 @@ const showSearchResults = () => {
     });
   });
 };
-
+// Event delegation for follow/unfollow buttons
 nameContainer?.addEventListener("click", async (e) => {
   if (!e.target.matches(".follow-btn")) return;
   const button = e.target;
@@ -84,10 +84,16 @@ nameContainer?.addEventListener("click", async (e) => {
     button.dataset.following = "true";
   }
 });
-
+// Search functionality
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
   showSearchResults();
+});
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    showSearchResults();
+  }
 });
 /**
  * @param {string} fetchPosts - Fetching all the posts made in the API

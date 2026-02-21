@@ -48,10 +48,11 @@ singlePostContainer.addEventListener("click", async (e) => {
     e.preventDefault();
     del(`/social/posts/${postId}`);
     alert("Post removed!");
+    window.location.href = "./index.html";
   }
   if (e.target.id === "edit-post") {
     e.preventDefault();
-    window.location.href = `/editPost.html?id=${postId}`;
+    window.location.href = `./editPost.html?id=${postId}`;
   }
   if (e.target.matches(".follow-btn")) {
     e.preventDefault();

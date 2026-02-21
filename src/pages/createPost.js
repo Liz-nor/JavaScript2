@@ -28,9 +28,18 @@ async function createPost(postData) {
 if (!createPost) {
   alert("something went wrong");
 }
-
+async function isImageUrl(url) {
+  // This function checks if the URL points to an image by making a HEAD request and checking the Content-Type header
+  try {
+    const response = await fetch(url, { method: "HEAD" });
+    const contentType = response.headers.get("Content-Type");
+    return contentType && contentType.startsWith("image/");
+  } catch (error) {
+    return false;
+  }
+}
 function looksLikeImageUrl(url) {
-  return /\.(png|jpeg|jpg|webp|gif|svg)$/i.test(url);
+  return /\.(png|jpeg|jpg|webp|gif|svg)$/i.test(url); // Check if URL ends with common image extensions, if not, it probably isn't a direct image link
 }
 
 if (addPostForm) {
@@ -59,6 +68,8 @@ if (addPostForm) {
       alert(
         "Please paste a direct image URL (ending in .jpeg/ .png/ .webp, etc.)",
       );
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
       return;
     }
 
