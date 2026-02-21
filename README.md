@@ -6,7 +6,7 @@
 
 - The codebase is organized with an SPA-style folder structure (pages/, components/, services/, routes/) to keep logic modular and reusable.
 
-<span style="color:red">This text is red</span>
+
 
 Project Title/Name: A clear, self-explanatory name for your project.
 Description: Explain what the project does, its purpose, the problem it solves, and any context or features.
