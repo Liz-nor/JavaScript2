@@ -44,8 +44,8 @@ async function loadPosts() {
       ${post.body ? `<p>${post.body}</p>` : ""}
       ${post.media?.url ? `<img class="post-image" src="${post.media.url}" alt="${post.media.alt || post.title}" onerror="this.remove()" />` : ""}
       <div class="post-actions">
-        <a href="/singlePost.html?id=${post.id}" class="card-link">View</a>
-        ${isOwnProfile ? `<a href="/editPost.html?id=${post.id}" class="card-link">Edit</a>` : ""}
+        <a href="./singlePost.html?id=${post.id}" class="card-link">View</a>
+        ${isOwnProfile ? `<a href="./editPost.html?id=${post.id}" class="card-link">Edit</a>` : ""}
       </div>
     </div>
   `,

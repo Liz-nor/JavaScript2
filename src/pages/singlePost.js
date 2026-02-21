@@ -32,7 +32,7 @@ async function fetchSinglePosts() {
             <a href="#" id="delete-post" class="card-link">Remove</a>`
           : ""
       }
-      <a href="/index.html" class="card-link">Back</a>
+      <a href="./index.html" class="card-link">Back</a>
     </article>`;
   } catch (error) {
     singlePostContainer.innerHTML = `<p>Error loading post.</p>`;
