@@ -18,7 +18,7 @@ const modal = document.getElementById("editModal");
 const closeModalBtn = document.getElementById("closeModal");
 
 closeModalBtn.addEventListener("click", () => {
-  window.location.href = `/index.html`;
+  window.location.href = `./index.html`;
 });
 
 const res = await get(`/social/posts/${postId}`);

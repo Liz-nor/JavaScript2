@@ -84,5 +84,5 @@ export async function loginUser(credentials) {
 export function logoutUser() {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("profile");
-  console.log("User has been logged out.");
+  alert("User has been logged out.");
 }

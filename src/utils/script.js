@@ -27,7 +27,6 @@ async function registerUser(userDetails) {
     alert("Account created! You can now log in.");
     window.location.href = "./login.html";
   } catch (error) {
-    console.log(error);
     alert("Something went wrong. Please try again.");
   }
 }
@@ -47,8 +46,10 @@ function onRegisterFormSubmit(event) {
   };
 
   if (f.bio) userDetails.bio = f.bio;
-  if (f["avatar-url"]) userDetails.avatar = { url: f["avatar-url"], alt: f["avatar-alt"] || "" };
-  if (f["banner-url"]) userDetails.banner = { url: f["banner-url"], alt: f["banner-alt"] || "" };
+  if (f["avatar-url"])
+    userDetails.avatar = { url: f["avatar-url"], alt: f["avatar-alt"] || "" };
+  if (f["banner-url"])
+    userDetails.banner = { url: f["banner-url"], alt: f["banner-alt"] || "" };
 
   registerUser(userDetails);
 }

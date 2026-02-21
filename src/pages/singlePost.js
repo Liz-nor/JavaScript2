@@ -26,9 +26,10 @@ async function fetchSinglePosts() {
       ${post.media?.url ? `<img class="post-single-image" src="${post.media.url}" alt="${imgAlt}" />` : ""}
       ${post.tags?.length ? `<div class="tags">${post.tags.map((tag) => `<span>*${tag} </span>`).join("")}</div>` : ""}
       ${authorName && authorName !== myUsername ? `<p>By: ${authorName} <button class="follow-btn" data-username="${authorName}" data-following="false">Follow</button></p>` : ""}
-      ${authorName === myUsername
+      ${
+        authorName === myUsername
           ? `<a href="#" id="edit-post" class="card-link">Edit</a>
-             <a href="#" id="delete-post" class="card-link">Remove</a>`
+            <a href="#" id="delete-post" class="card-link">Remove</a>`
           : ""
       }
       <a href="/index.html" class="card-link">Back</a>
@@ -46,7 +47,7 @@ singlePostContainer.addEventListener("click", async (e) => {
   if (e.target.id === "delete-post") {
     e.preventDefault();
     del(`/social/posts/${postId}`);
-    console.log("Post removed!");
+    alert("Post removed!");
   }
   if (e.target.id === "edit-post") {
     e.preventDefault();

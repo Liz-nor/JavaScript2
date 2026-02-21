@@ -2,7 +2,7 @@ import { post, del } from "../services/apiClient.js";
 import { isLoggedIn } from "../services/auth.js";
 
 if (!isLoggedIn()) {
-  window.location.href = "/login.html";
+  window.location.href = "./login.html";
 }
 
 const addPostForm = document.querySelector("#add-post-form");
@@ -20,10 +20,8 @@ const closeModalBtn = document.getElementById("closeModal");
 async function createPost(postData) {
   try {
     const newPost = await post("/social/posts", postData);
-    console.log("Created post:", newPost);
     return newPost;
   } catch (error) {
-    console.log("Create post error:", error.message);
     throw error;
   }
 }
@@ -77,7 +75,6 @@ if (addPostForm) {
       const created = res.data;
 
       addPostForm.reset();
-      console.log("Post created", created);
       modal.classList.remove("hidden");
 
       setTimeout(() => {
@@ -88,7 +85,7 @@ if (addPostForm) {
       modal.querySelector("p").textContent =
         `"${created.title}" was successfully posted`;
     } catch (error) {
-      console.error("Create post error:", error.message);
+      alert(`Create post error: ${error.message}`);
     } finally {
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
@@ -99,6 +96,6 @@ if (addPostForm) {
 if (closeModalBtn) {
   closeModalBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
-    window.location.href = "/index.html";
+    window.location.href = "./index.html";
   });
 }

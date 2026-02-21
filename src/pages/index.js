@@ -107,7 +107,6 @@ export async function fetchPosts() {
 
 export function generatePosts(posts) {
   postContainer.innerHTML = "";
-  console.log(posts);
   for (let i = 0; i < posts.length; i++) {
     const post = posts[i];
 

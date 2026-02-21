@@ -9,10 +9,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/profile", (req, res) => {
-  console.log(req.body);
   res.send("Profile created successfully");
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on https://localhost:${port}`);
-});
+app.listen(port, () => {});
