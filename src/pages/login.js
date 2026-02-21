@@ -25,45 +25,45 @@ loginForm.addEventListener("submit", async (event) => {
  *Log in user
  * @param {object} userDetails - Details of the user logging in
  */
-const ALLOWED_DOMAIN = "@stud.noroff.no";
+// const ALLOWED_DOMAIN = "@stud.noroff.no";
 
-function updateNavAuthState() {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  const userEmail = localStorage.getItem("userEmail");
-  // --- Check if user is logged in with a valid domain
-  const isValidUser =
-    isLoggedIn &&
-    userEmail &&
-    userEmail.toLowerCase().endsWith(ALLOWED_DOMAIN.toLowerCase());
+// function updateNavAuthState() {
+//   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+//   const userEmail = localStorage.getItem("userEmail");
+//   // --- Check if user is logged in with a valid domain
+//   const isValidUser =
+//     isLoggedIn &&
+//     userEmail &&
+//     userEmail.toLowerCase().endsWith(ALLOWED_DOMAIN.toLowerCase());
 
-  const loggedOutEls = document.querySelectorAll(".auth-logged-out");
-  const loggedInEls = document.querySelectorAll(".auth-logged-in");
+//   const loggedOutEls = document.querySelectorAll(".auth-logged-out");
+//   const loggedInEls = document.querySelectorAll(".auth-logged-in");
 
-  if (isValidUser) {
-    loggedOutEls.forEach((el) => (el.style.display = "none"));
-    loggedInEls.forEach((el) => (el.style.display = ""));
-  } else {
-    loggedOutEls.forEach((el) => (el.style.display = ""));
-    loggedInEls.forEach((el) => (el.style.display = "none"));
-  }
-}
+//   if (isValidUser) {
+//     loggedOutEls.forEach((el) => (el.style.display = "none"));
+//     loggedInEls.forEach((el) => (el.style.display = ""));
+//   } else {
+//     loggedOutEls.forEach((el) => (el.style.display = ""));
+//     loggedInEls.forEach((el) => (el.style.display = "none"));
+//   }
+// }
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateNavAuthState();
+// document.addEventListener("DOMContentLoaded", () => {
+//   updateNavAuthState();
 
-  const logoutBtn = document.getElementById("logout-btn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("userEmail");
-      updateNavAuthState();
-      // Check if we're already on index.html in root, otherwise go to ../index.html
-      const currentPath = window.location.pathname;
-      if (currentPath.endsWith("/index.html") || currentPath.endsWith("/")) {
-        window.location.reload();
-      } else {
-        window.location.href = "../index.html";
-      }
-    });
-  }
-});
+//   const logoutBtn = document.getElementById("logout-btn");
+//   if (logoutBtn) {
+//     logoutBtn.addEventListener("click", () => {
+//       localStorage.removeItem("isLoggedIn");
+//       localStorage.removeItem("userEmail");
+//       updateNavAuthState();
+//       // Check if we're already on index.html in root, otherwise go to ../index.html
+//       const currentPath = window.location.pathname;
+//       if (currentPath.endsWith("/index.html") || currentPath.endsWith("/")) {
+//         window.location.reload();
+//       } else {
+//         window.location.href = "../index.html";
+//       }
+//     });
+//   }
+// });

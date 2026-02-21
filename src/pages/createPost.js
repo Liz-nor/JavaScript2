@@ -1,5 +1,9 @@
-import { post } from "../services/apiClient.js";
-import { del } from "../services/apiClient.js";
+import { post, del } from "../services/apiClient.js";
+import { isLoggedIn } from "../services/auth.js";
+
+if (!isLoggedIn()) {
+  window.location.href = "/login.html";
+}
 
 const addPostForm = document.querySelector("#add-post-form");
 const titleValue = document.getElementById("form-title");
@@ -95,5 +99,6 @@ if (addPostForm) {
 if (closeModalBtn) {
   closeModalBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
+    window.location.href = "/index.html";
   });
 }

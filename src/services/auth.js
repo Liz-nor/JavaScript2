@@ -2,15 +2,33 @@ import { post } from "./apiClient.js";
 
 const LOGIN_ENDPOINT = "/auth/login";
 /**
- * Logs in a user.
+ * Function that logs in a user.
  * @param {object} credentials The users email and password.
- * @returns {Promise<object>} The user profile data.
+ * @returns {object} The users profile information.
+ * @throws {Error} If the login request fails or if no access token is received.
  */
 
 export function isLoggedIn() {
   return Boolean(localStorage.getItem("accessToken"));
 }
-
+/**
+ * Checks if the user is logged in by verifying the presence of an access token in localStorage.
+ * @returns {boolean} True if the user is logged in, false otherwise.
+ */
+export function updateAuthUI() {
+  const loggedIn = isLoggedIn();
+  document.querySelectorAll(".isLoggedIn").forEach((el) => {
+    el.style.display = loggedIn ? "" : "none";
+  });
+  document.querySelectorAll(".isLoggedOut").forEach((el) => {
+    el.style.display = loggedIn ? "none" : "";
+  });
+}
+/**
+ * Opens the authentication modal.
+ * @param {string} mode - The mode of the modal, either "login" or "signup".
+ *
+ */
 export function openAuthModal(mode = "login") {
   const modal = document.getElementById("loginModal");
   modal.dataset.mode = mode;
@@ -36,7 +54,7 @@ export function initAuth() {
     localStorage.setItem(LOGIN_ENDPOINT, "true");
 
     closeAuthModal();
-    window.dispatchEvent(new Event("auth:changed"));
+    window.dispatchEvent(new Event("auth:changed")); // Trigger a custom event to update the UI after logout
   });
 }
 

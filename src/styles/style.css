@@ -24,9 +24,18 @@
 
 body {
   margin: 0;
-  place-items: center;
+  text-align: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.377);
 }
 
 #container {
@@ -64,8 +73,24 @@ body {
 .post {
   display: flex;
   flex-direction: column;
+  margin: auto;
+  margin-top: 20px;
+  width: 600px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.377);
+}
 
-  border: 2px solid red;
+.profile-container {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  gap: 10px;
+  padding: 10px;
+}
+.profile-card {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #1a1a1a;
+  color: #fff;
 }
 .post-single-image {
   width: 400px;
@@ -95,6 +120,7 @@ a:hover {
 }
 .post-container a {
   margin-top: auto;
+  width: 400px;
   order: 3;
   text-decoration: underline;
 }
@@ -114,29 +140,46 @@ h1 {
 .card {
   padding: 2em;
 }
-
+/* Login and register styling */
 .login {
   display: flex;
 }
+
 .login-wrapper {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   color: #fff;
   padding: 2em;
+  border: #000 solid 2px;
 }
+
 .login-details {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  margin: 30px;
+}
+.email,
+.password {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
 }
 .login-details label {
   font-size: large;
+  padding: 5px;
 }
+
 .login-details input {
   height: 30px;
   padding: 5px;
-  font-size: medium;
+}
+.fa-key,
+.fa-envelope {
+  font-size: 1.2em;
+  align-content: center;
 }
 .social-title {
   padding: 10px;
@@ -148,9 +191,10 @@ h1 {
   margin: 5px;
 }
 .social-buttons {
-  border: 2px solid black;
-  padding: 10px;
-  width: 100px;
+  border-radius: 10px;
+  gap: 5px;
+  padding: 7px;
+  width: 130px;
   display: flex;
   flex-direction: row;
 }
@@ -160,38 +204,44 @@ h1 {
 }
 
 .fa-brands {
-  padding: 7px;
+  padding: 8px;
 }
 .signup-wrapper {
-  background-color: blue;
   padding: 2em;
 }
+
+#edit-form,
 #register-form {
+  border: #000 solid 2px;
+  width: 400px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  margin: 50px auto;
+  gap: 10px;
 }
 
-#register-form input {
+#form input {
   height: 30px;
+  width: 250px;
   background-color: #fff;
   color: #000;
-  width: 250px;
+
   font-size: 1rem;
   margin: 5px;
 }
-#register-form input:hover {
+#form input:hover {
   transform: scale(1.04);
 }
-#register-form label {
+#form label {
   margin-left: 5px;
   font-size: 1.3rem;
 }
-#register-form input:last-of-type {
+/* #form input:last-of-type {
   margin-bottom: 15px;
-}
-.broken-link {
-  display: none;
-}
+} */
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -256,8 +306,8 @@ button:focus-visible {
 
 #closeModal {
   width: 100px;
-  height: 50px;
-  margin: auto;
+  height: 40px;
+  margin: 10px auto 0 auto;
   background-color: rgb(40, 40, 255);
   color: #fff;
   border: none;

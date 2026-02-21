@@ -16,8 +16,19 @@ async function registerUser(userDetails) {
       },
     };
     const response = await fetch(AUTH_REGISTER_URL, fetchOptions);
+    const data = await response.json();
+
+    if (!response.ok) {
+      const message = data?.errors?.[0]?.message || "Registration failed.";
+      alert(`Error: ${message}`);
+      return;
+    }
+
+    alert("Account created! You can now log in.");
+    window.location.href = "./login.html";
   } catch (error) {
     console.log(error);
+    alert("Something went wrong. Please try again.");
   }
 }
 /**
@@ -27,8 +38,18 @@ async function registerUser(userDetails) {
 function onRegisterFormSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const formFields = Object.fromEntries(formData);
-  console.log(formFields);
-  registerUser(formFields);
+  const f = Object.fromEntries(formData);
+
+  const userDetails = {
+    name: f.name,
+    email: f.email,
+    password: f.password,
+  };
+
+  if (f.bio) userDetails.bio = f.bio;
+  if (f["avatar-url"]) userDetails.avatar = { url: f["avatar-url"], alt: f["avatar-alt"] || "" };
+  if (f["banner-url"]) userDetails.banner = { url: f["banner-url"], alt: f["banner-alt"] || "" };
+
+  registerUser(userDetails);
 }
 registerForm.addEventListener("submit", onRegisterFormSubmit);

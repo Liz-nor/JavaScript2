@@ -37,11 +37,11 @@ async function apiClient(endpoint, options = {}) {
 
   try {
     const response = await fetch(BASE_URL + endpoint, config);
-    const responseData = await response.json();
+    const responseData = response.status !== 204 ? await response.json() : {};
 
     if (!response.ok) {
       const errorMessage =
-        responseData.errors?.[0]?.message || "An unknown API error occured.";
+        responseData?.errors?.[0]?.message || "An unknown API error occured.";
       throw new Error(errorMessage);
     }
     return responseData;

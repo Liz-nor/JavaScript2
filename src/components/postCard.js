@@ -1,1 +1,0 @@
-path ${/social/posts/<id>}

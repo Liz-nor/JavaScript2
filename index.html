@@ -18,13 +18,20 @@
 
 <body>
     <header id="navbar">
-        <!-- <main id="app"></main> -->
         <ul>
-            <a href="/">Home</a>
             <a href="/register.html" class="isLoggedOut">Register</a>
             <a href="/login.html" class="isLoggedOut">Login</a>
             <a href="/createPost.html" class="isLoggedIn">Create Post</a>
-            <button id="logout-btn" class="isLoggedIn">Log Out</button>
+            <a href="#" id="logout-btn" class="isLoggedIn">Log Out</a>
+            <a href="/profilePage.html" class="isLoggedIn">My Profile</a>
+            <div class="main__input-container">
+                <input type="text" id="search" class="main__input" placeholder="Enter a username..."><i
+                    class="fa-solid fa-magnifying-glass"></i>
+                <span>
+                    <a class="btn btn--shallow searchButton">Search</a>
+                </span>
+            </div>
+            <div class="profile-container"></div>
         </ul>
     </header>
     <h1>Social Posts</h1>
