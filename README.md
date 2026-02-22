@@ -1,6 +1,8 @@
 # My JavaScript2 assignment
 
 ### This assignment focuses on building a social media app where you can read other peoples posts, follow their profiles, create your own post as well as edit or delete them. Be sure to includea profile picture to make you stand out in the crowd.
+<img width="982" height="813" alt="image" src="https://github.com/user-attachments/assets/888f331b-4b1a-4761-93c3-30f420529c8f" />
+
 
 - This project is implemented as a multi-page application (MPA) using multiple HTML entry pages (e.g., login.html, profile.html).
 
