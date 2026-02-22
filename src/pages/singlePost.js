@@ -25,7 +25,7 @@ async function fetchSinglePosts() {
       <p>${post.body}</p>
       ${post.media?.url ? `<img class="post-single-image" src="${post.media.url}" alt="${imgAlt}" />` : ""}
       ${post.tags?.length ? `<div class="tags">${post.tags.map((tag) => `<span>*${tag} </span>`).join("")}</div>` : ""}
-      ${authorName && authorName !== myUsername ? `<p>By: ${authorName} <button class="follow-btn" data-username="${authorName}" data-following="false">Follow</button></p>` : ""}
+      ${authorName && authorName !== myUsername ? `<p>By: ${authorName} <button class="follow-btn btn btn-primary" data-username="${authorName}" data-following="false">Follow</button></p>` : ""}
       ${
         authorName === myUsername
           ? `<a href="#" id="edit-post" class="card-link">Edit</a>

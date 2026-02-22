@@ -3,14 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS2</title>
+  <link rel="shortcut icon" href="./public/img/LE-favicon.png" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <link rel="stylesheet" href="./src/styles/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="shortcut icon" href="./public/img/LE-favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./src/styles/styles.css">
   <script type="module" src="./src/utils/script.js"></script>
 </head>
 
@@ -21,50 +20,31 @@
       <a href="./index.html">Home</a>
     </ul>
   </header>
-  <main id="app-content"></main>
-  <div class="register">
-    <form id="register-form">
-      <h2>Please make an account</h2>
-      <div>
-        <label for="name">Name*</label>
-        <input id="name" type="name" name="name" required placeholder="Please enter name">
-      </div>
-      <div>
-        <label for="email">Email*</label>
-        <input id="email" type="email" name="email" required placeholder="Please enter email">
-      </div>
-      <div>
-        <label for="password">Password*</label>
-        <input id="password" type="password" name="password" required placeholder="Please enter password">
-      </div>
-      <div>
-        <label for="bio">Bio</label>
-        <input id="bio" type="bio" name="bio" placeholder="Please enter bio">
-      </div>
-      <div>
-        <label for="avatar-url">Avatar URL</label>
-        <input id="avatar-url" type="avatar-url" name="avatar-url" placeholder="Please enter avatar URL">
-      </div>
-      <div>
-        <label for="avatar-alt">Avatar ALT</label>
-        <input id="avatar-alt" type="avatar-alt" name="avatar-alt" placeholder="Please enter avatar ALT">
-      </div>
-      <div>
-        <label for="banner-url">Banner URL</label>
-        <input id="banner-url" type="banner-url" name="banner-url" placeholder="Please enter banner URL">
-      </div>
-      <div>
-        <label for="banner-alt">Banner ALT</label>
-        <input id="banner-alt" type="banner-alt" name="banner-alt">
-      </div>
-      <div>
-        <label for="venue-manager">Venue Manager</label>
-        <input id="venue-manager" type="venue-manager" name="venue-manager">
-      </div>
-      <button class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-
+  <main>
+    <div class="register">
+      <form id="register-form">
+        <h2>Please make an account</h2>
+        <div>
+          <label for="name">Name*</label>
+          <input id="name" type="name" name="name" required placeholder="Please enter name">
+        </div>
+        <div>
+          <label for="email">Email*</label>
+          <input id="email" type="email" name="email" required placeholder="Please enter email">
+        </div>
+        <div>
+          <label for="password">Password*</label>
+          <input id="password" type="password" name="password" required placeholder="Please enter password">
+        </div>
+        <div>
+          <label for="bio">Bio</label>
+          <input id="bio" type="bio" name="bio" placeholder="Please enter bio">
+        </div>
+        <div>
+          <button class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </main>
 </body>
 
 </html>

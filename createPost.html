@@ -4,41 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="./src/pages/createPost.js"></script>
     <title>Create Post</title>
+    <link rel="shortcut icon" href="public/img/LE-favicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./src/styles/styles.css">
-    <link rel="stylesheet" href="./src/styles/createPost.css">
-    <link rel="shortcut icon" href="public/img/LE-favicon.png" type="image/x-icon">
+    <script type="module" src="./src/pages/createPost.js"></script>
 </head>
 
 <body>
-    <div class="form-container">
-        <form id="add-post-form">
-            <div class="mb-3">
-                <label for="text">Enter your title*</label>
-                <input type="text" class="form-control" id="form-title">
-            </div>
-            <div class="mb-3">
-                <label for="text" class="form-body">Enter your post*</label>
-                <input type="text" class="form-control" id="form-body">
-            </div>
-            <label for="form-image-url">Image URL (paste a link to an image):</label>
-            <input id="form-image-url" type="text" placeholder="https://example.com/image.jpg">
-            <input id="form-image-alt" type="text" placeholder="Image alt text (optional)">
-            <input type="text" id="form-tags" placeholder="tags (comma separated)">
-            <br>
-            <button id="postSubmit" type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-    <div id="postModal" class="modal hidden" role="dialog" aria-modal="true">
-        <div class="modal-content">
-            <h2></h2>
-            <p></p>
-            <button id="closeModal" type="button">Close</button>
+    <header id="navbar">
+        <ul>
+            <a href="./index.html">Home</a>
+            <a href="#" id="logout-btn" class="isLoggedIn">Log Out</a>
+            <a href="./profilePage.html" class="isLoggedIn">My Profile</a>
+        </ul>
+    </header>
+    <main>
+        <div class=" form-container">
+            <form id="add-post-form">
+                <div class="mb-3">
+                    <label for="text">Enter your title*</label>
+                    <input type="text" class="form-control" id="form-title">
+                </div>
+                <div class="mb-3">
+                    <label for="text" class="form-body">Enter your post*</label>
+                    <input type="text" class="form-control" id="form-body">
+                </div>
+                <label for="form-image-url">Image URL (paste a link to an image):</label>
+                <input id="form-image-url" type="text" placeholder="https://example.com/image.jpg">
+                <input id="form-image-alt" type="text" placeholder="Image alt text (optional)">
+                <input type="text" id="form-tags" placeholder="tags (comma separated)">
+                <br>
+                <button id="postSubmit" type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-    </div>
+        <div id="postModal" class="modal hidden" role="dialog" aria-modal="true">
+            <div class="modal-content">
+                <h2></h2>
+                <p></p>
+                <button id="closeModal" type="button">Close</button>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

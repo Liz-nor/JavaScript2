@@ -4,7 +4,6 @@ import {
   displayPage,
   setAllPosts,
 } from "../components/pagination.js";
-import { getNavbarHTML } from "../components/navbar.js";
 import { get, put } from "../services/apiClient.js";
 import { logoutUser, updateAuthUI } from "../services/auth.js";
 
@@ -57,7 +56,7 @@ const showSearchResults = () => {
 
       if (user.name !== myUsername) {
         const followButton = document.createElement("button");
-        followButton.className = "follow-btn";
+        followButton.classList.add("follow-btn", "btn", "btn-primary");
         followButton.dataset.username = user.name;
         followButton.dataset.following = "false";
         followButton.textContent = "Follow";
@@ -67,7 +66,7 @@ const showSearchResults = () => {
     });
   });
 };
-// Event delegation for follow/unfollow buttons
+// Events for follow/unfollow buttons
 nameContainer?.addEventListener("click", async (e) => {
   if (!e.target.matches(".follow-btn")) return;
   const button = e.target;
@@ -84,7 +83,7 @@ nameContainer?.addEventListener("click", async (e) => {
     button.dataset.following = "true";
   }
 });
-// Search functionality
+// Searcharea
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
   showSearchResults();
