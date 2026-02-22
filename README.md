@@ -16,12 +16,10 @@ This project is built using:<br>
 
 📦 Installation Follow these steps to get a copy of the project running locally:
 
-- Clone the repository: bash git clone https://github.com/liz-nor/ProjectExam1.git
+- Clone the repository: bash git clone https://github.com/Liz-nor/JavaScript2.git
 
-- Open the repository: bash cd ProjectExam1
+- Open the repository: bash cd JavaScript2
 
 - Run Live Server or write npm run dev in the terminal
 
-Contributing Guidelines: Indicate how others can contribute to your project.
-License: Specify the license under which your project is released.
-Acknowledgments/Citations: Acknowledge funding bodies or contributors.
+
