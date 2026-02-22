@@ -103,7 +103,7 @@ searchInput.addEventListener("keydown", (e) => {
  */
 export async function fetchPosts() {
   try {
-    const response = await get("/social/posts");
+    const response = await get("/social/posts?_author=true");
 
     return response.data;
   } catch (error) {
@@ -123,14 +123,23 @@ export function generatePosts(posts) {
     const title = document.createElement("h2");
     title.textContent = post.title;
 
+    const author = document.createElement("p");
+    author.className = "post-author";
+
+    const authorLink = document.createElement("a");
+    authorLink.className = "author-link btn btn-primary";
+    authorLink.href = `./profilePage.html?name=${post.author.name}`;
+    authorLink.textContent = `By: ${post.author.name ?? "Unknown Author"}`;
+    author.appendChild(authorLink);
+
     const body = document.createElement("p");
     body.textContent = post.body;
 
     const anchor = document.createElement("a");
     anchor.href = `./singlePost.html?id=${post.id}`;
-    anchor.textContent = "View Post";
+    anchor.textContent = "View This Post";
 
-    postElement.append(title, body, anchor);
+    postElement.append(title, body, author, anchor);
 
     const mediaUrl = post.media?.url;
 
