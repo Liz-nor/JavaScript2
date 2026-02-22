@@ -1,6 +1,11 @@
 import { get, del, put } from "../services/apiClient.js";
 import { isLoggedIn } from "../services/auth.js";
 
+/**
+ * Fetches and displays a single post based on the ID provided in the URL query parameters.
+ * If the post belongs to the logged-in user, "Edit" and "Remove" options are displayed.
+ * If the post belongs to another user, a "Follow" button is displayed to allow following/unfollowing the author.
+ */
 const singlePostContainer = document.getElementById("container");
 const myUsername = JSON.parse(localStorage.getItem("profile"))?.name;
 

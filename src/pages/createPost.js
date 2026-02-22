@@ -17,6 +17,11 @@ const submitBtn = document.getElementById("postSubmit");
 const modal = document.getElementById("postModal");
 const closeModalBtn = document.getElementById("closeModal");
 
+/**
+ * Creates a new post with the provided data.
+ * @param {Object} postData - The data for the new post.
+ * @returns {Promise<Object>} The created post data.
+ */
 async function createPost(postData) {
   try {
     const newPost = await post("/social/posts", postData);

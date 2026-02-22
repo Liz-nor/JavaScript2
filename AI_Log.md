@@ -10,7 +10,7 @@ Followed this up with asking if it was a standard string or if there are variati
 Yes different kinds of strings, depending on what rules they follow.
 
 Purpose: Debug manifest.json (wouldnt load)
-Outcome: I didnt have any icons loaded other than one but in the manifest i had put in that I was going to have more. Had to remove those paramaters and it worked after that.
+Outcome: I didnt have any icons loaded other than one but in the manifest i had put in that I was going to have more. Had to remove those and it worked after that.
 
 Purpose: Had image not showing on the page but came up as correct in the console.log
 Outcome: I had misspelled src...
@@ -34,7 +34,7 @@ Outcome: Explained comma separated input string, split into array, trimming spac
 
 Date: 19.feb
 Purpose: Finding images that end with jpg because from for example unsplash do not end with this.
-Outcome: Made me aware of wikipedia images that ends with jpg to try. First wanted me to try and just write .jpg behind the url (which didnt work of course)
+Outcome: Made me aware of wikipedia images that ends with jpg to try.
 
 Date: 20.feb
 Purpose: Had some errors trying to log in, could not make new account and could not figure out why

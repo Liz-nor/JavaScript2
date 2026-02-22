@@ -31,6 +31,7 @@ const showSearchResults = () => {
       return;
     }
     data.forEach((user) => {
+      // Loop through the search results and create a profile card for each user
       const userCard = document.createElement("div");
       userCard.className = "profile-card";
       userCard.dataset.username = user.name;
@@ -55,6 +56,7 @@ const showSearchResults = () => {
       userCard.appendChild(userInfo);
 
       if (user.name !== myUsername) {
+        // Only show follow button for other users, not for the current user
         const followButton = document.createElement("button");
         followButton.classList.add("follow-btn", "btn", "btn-primary");
         followButton.dataset.username = user.name;
@@ -109,7 +111,7 @@ export async function fetchPosts() {
     return [];
   }
 }
-
+// This function generates the HTML for the posts and appends them to the container element
 export function generatePosts(posts) {
   postContainer.innerHTML = "";
   for (let i = 0; i < posts.length; i++) {
@@ -144,7 +146,7 @@ export function generatePosts(posts) {
     postContainer.appendChild(postElement);
   }
 }
-
+// This function is called when the page loads and initializes the authentication system, fetches the posts, and displays them on the page
 async function main() {
   updateAuthUI();
 

@@ -1,6 +1,7 @@
 import { post } from "./apiClient.js";
 
 const LOGIN_ENDPOINT = "/auth/login";
+
 /**
  * Function that logs in a user.
  * @param {object} credentials The users email and password.
@@ -11,11 +12,14 @@ const LOGIN_ENDPOINT = "/auth/login";
 export function isLoggedIn() {
   return Boolean(localStorage.getItem("accessToken"));
 }
+
 /**
  * Checks if the user is logged in by verifying the presence of an access token in localStorage.
  * @returns {boolean} True if the user is logged in, false otherwise.
  */
+
 export function updateAuthUI() {
+  // This function shows or hides elements based on the user's authentication status
   const loggedIn = isLoggedIn();
   document.querySelectorAll(".isLoggedIn").forEach((el) => {
     el.style.display = loggedIn ? "" : "none";
@@ -24,22 +28,22 @@ export function updateAuthUI() {
     el.style.display = loggedIn ? "none" : "";
   });
 }
-/**
- * Opens the authentication modal.
- * @param {string} mode - The mode of the modal, either "login" or "signup".
- *
- */
+
 export function openAuthModal(mode = "login") {
+  // This function opens the authentication modal and sets its mode (login or signup)
   const modal = document.getElementById("loginModal");
   modal.dataset.mode = mode;
   modal.style.display = "block";
 }
 
 export function closeAuthModal() {
+  // This function closes the authentication modal
   document.getElementById("loginModal").style.display = "none";
 }
 
 export function initAuth() {
+  // This function initializes the authentication system by setting up event listeners and updating the UI based on the user's authentication status
+  updateAuthUI();
   document
     .getElementById("closeModal")
     .addEventListener("click", closeAuthModal);
