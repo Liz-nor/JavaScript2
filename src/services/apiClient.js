@@ -41,6 +41,9 @@ async function apiClient(endpoint, options = {}) {
     const responseData = response.status !== 204 ? await response.json() : {};
 
     if (!response.ok) {
+      alert(
+        responseData?.errors?.[0]?.message || "An unknown API error occured.",
+      );
       const errorMessage =
         responseData?.errors?.[0]?.message || "An unknown API error occured.";
       throw new Error(errorMessage);
